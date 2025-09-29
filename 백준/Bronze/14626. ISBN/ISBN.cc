@@ -1,55 +1,60 @@
 #include <iostream>
-#include <string>
-#include <vector>
+using namespace std;
 
-int main() {
-    // C++ 입출력 속도 향상
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
+int main() 
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int res = 0;
+	int idx = 0; //*의 인덱스를 저장
 
-    // 13자리 번호 입력
-    std::string isbn;
-    std::cin >> isbn;
+	for (int i = 0; i < 13; i++) 
+	{
+		char c;
+		cin >> c;
+		
 
-    int sum = 0;
-    int star_index = -1;
+		
 
-    // 1. '*'의 위치를 찾고, 나머지 숫자들의 가중치 합을 계산
-    for (int i = 0; i < 13; ++i) {
-        if (isbn[i] == '*') {
-            star_index = i; // '*'의 인덱스 저장
-        } else {
-            // 문자를 숫자로 변환
-            int digit = isbn[i] - '0';
+		//숫자인지 *인지 
+		//순서가 짝수인지 홀수인지
+		//맨마지막 숫자인지 아닌지
+		
+		
+			if (c == '*') 
+			{
+				idx = i+1;
+				//cout << "idx: " << idx << "\n";
+			}
+			else 
+			{
+				if ((i+1) % 2 == 0) 
+				{
+					res += 3 * (c - '0');
+					//cout << "i: " << i <<" " << res << "\n";
+				}
+				else 
+				{
+					res += (c - '0');
+					//cout << "i: " << i << " " << res << "\n";
+				}
+			}
+		
 
-            // 위치(인덱스)에 따른 가중치 결정
-            // 인덱스가 0, 2, 4, ... (홀수 번째) -> 가중치 1
-            // 인덱스가 1, 3, 5, ... (짝수 번째) -> 가중치 3
-            if (i % 2 == 0) {
-                sum += digit * 1;
-            } else {
-                sum += digit * 3;
-            }
-        }
-    }
+		
 
-    // 2. '*' 자리에 0부터 9까지 대입하여 정답 찾기
-    for (int missing_digit = 0; missing_digit <= 9; ++missing_digit) {
-        int temp_sum = sum;
-        
-        // '*' 위치의 가중치를 판별
-        if (star_index % 2 == 0) {
-            temp_sum += missing_digit * 1;
-        } else {
-            temp_sum += missing_digit * 3;
-        }
+	}
+	if (idx % 2 == 0) {
+		int num = (10 - res % 10)%10;
+		for (int i = 0; i <= 9; i++) {
+			if ((3 * i) % 10 == num) {
+				cout << i;
+				return 0;
+			}
+		}
+	}
+	else {
+		cout << (10 - res % 10)%10;
+	}
 
-        // 3. 가중치 총합이 10의 배수인지 확인
-        if (temp_sum % 10 == 0) {
-            std::cout << missing_digit << std::endl;
-            break; // 정답을 찾았으므로 반복문 종료
-        }
-    }
-
-    return 0;
 }
