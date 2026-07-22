@@ -75,3 +75,11 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+
+### 혼자 정리
+주로 c++에서는 해시를 구현하라는 듯한 문제가 나온다면
+unordered_map, unordered_set 자료구조를 사용한다.
+
+처음 생각한 방식은 for문 여러번을 사용하는 것
+비효율적임을 알고 있지만 생각나는 방식이 아직 이것 밖에 없음.
