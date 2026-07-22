@@ -82,3 +82,7 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+### 혼자 정리
+unordered_map에서 키가 몇개인지를 뽑을려면 
+선언한 객체 변수명.size()로 간단하게 뽑을 수 있음.
