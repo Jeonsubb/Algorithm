@@ -8,7 +8,7 @@ int answer = 0;
 void func(int k,int sum,int idx){
     if(k==3){
         if(sum==0) answer++;
-        cout <<"k:"<< k <<" " <<"sum:" << sum <<" " <<"idx:"<<idx<<"\n";
+        //cout <<"k:"<< k <<" " <<"sum:" << sum <<" " <<"idx:"<<idx<<"\n";
         return;
     }
     
