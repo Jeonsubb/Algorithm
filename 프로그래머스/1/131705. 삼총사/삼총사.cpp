@@ -1,15 +1,17 @@
 #include <string>
 #include <vector>
-#include <iostream>
+
 using namespace std;
+int answer = 0;
 vector<int> brd;
 vector<int> chk;
-int answer = 0;
-void func(int k,int sum,int idx){
+void func(int k,int sum, int idx){
     if(k==3){
-        if(sum==0) answer++;
-        //cout <<"k:"<< k <<" " <<"sum:" << sum <<" " <<"idx:"<<idx<<"\n";
-        return;
+        if(sum==0) {
+            answer++;
+            return;
+        }
+        else return;
     }
     
     for(int i=idx;i<brd.size();i++){
@@ -19,9 +21,7 @@ void func(int k,int sum,int idx){
     }
 }
 int solution(vector<int> number) {
-    
-    brd=number;
-    //cout << brd.size()<<"\n";
+    brd = number;
     func(0,0,0);
     return answer;
 }
